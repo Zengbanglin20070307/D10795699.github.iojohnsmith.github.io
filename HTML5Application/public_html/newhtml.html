@@ -1,12 +1,76 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My First GitHub Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>标准3D渐变立方体 | div+linear-gradient+translate+skewX+skewY</title>
+<style>
+* {margin:0;padding:0;box-sizing:border-box;}
+body {
+  min-height: 100vh;
+  display: flex;justify-content:center;align-items:center;
+  background: #0f172a;
+  perspective: 1000px; /* 3D透视 */
+}
+
+/* 立方体父容器 保留3D空间 */
+.cube-container {
+  width: 200px;height:200px;
+  position:relative;
+  transform-style: preserve-3d;
+  transform: rotateX(25deg) rotateY(40deg);
+}
+
+/* 公共面样式 */
+.face {
+  position:absolute;
+  width:200px;height:200px;
+  border:1px solid rgba(255,255,255,0.15);
+  opacity:0.92;
+}
+
+/* 前侧：渐变 + translateZ */
+.front {
+  background: linear-gradient(45deg, #f43f5e, #fb7185);
+  transform: translateZ(100px);
+}
+/* 后侧 */
+.back {
+  background: linear-gradient(45deg, #3b82f6, #60a5fa);
+  transform: translateZ(-100px);
+}
+
+/* 左侧：结合 skewY + translateX 塑形侧面 */
+.left {
+  background: linear-gradient(45deg, #10b981, #34d399);
+  transform: rotateY(-90deg) translateZ(100px) skewY(1deg);
+}
+/* 右侧 */
+.right {
+  background: linear-gradient(45deg, #f59e0b, #fbbf24);
+  transform: rotateY(90deg) translateZ(100px) skewY(-1deg);
+}
+
+/* 顶面：skewX + 位移倾斜微调 */
+.top {
+  background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+  transform: rotateX(90deg) translateZ(100px) skewX(1deg);
+}
+/* 底面 */
+.bottom {
+  background: linear-gradient(45deg, #ec4899, #f472b6);
+  transform: rotateX(-90deg) translateZ(100px) skewX(-1deg);
+}
+</style>
 </head>
 <body>
-    <h1>Hello from NetBeans & GitHub!</h1>
-    <p>This is my first HTML5 page hosted on GitHub Pages.</p>
+<div class="cube-container">
+  <div class="face front"></div>
+  <div class="face back"></div>
+  <div class="face left"></div>
+  <div class="face right"></div>
+  <div class="face top"></div>
+  <div class="face bottom"></div>
+</div>
 </body>
 </html>
