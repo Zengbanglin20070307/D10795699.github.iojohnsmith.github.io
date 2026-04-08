@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script>
+// 1. 调用 prompt 获取 a、b、c
+let a = prompt("请输入二次项系数 a：");
+let b = prompt("请输入一次项系数 b：");
+let c = prompt("请输入常数项 c：");
+
+// 2. 转换为数字
+a = parseFloat(a);
+b = parseFloat(b);
+c = parseFloat(c);
+
+// 3. 计算判别式 delta
+let delta = b * b - 4 * a * c;
+
+// 4. 计算两个根
+let x1 = (-b + Math.sqrt(delta)) / (2 * a);
+let x2 = (-b - Math.sqrt(delta)) / (2 * a);
+
+// 5. alert 显示结果
+alert("方程的解为：\nx1 = " + x1 + "\nx2 = " + x2);
+
+// 6. console.log 显示结果
+console.log("方程的解为：");
+console.log("x1 =", x1);
+console.log("x2 =", x2);
+</script>
+</body>
+</html>
